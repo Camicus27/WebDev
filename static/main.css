@@ -1,3 +1,90 @@
+/* Phase 1
 * {
     color: yellow;
 }
+*/
+
+
+/* Phase 2 */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+
+* { /* All text */
+    font-family: 'IBM Plex Sans', Calibri;
+    line-height: 1.25rem;
+}
+
+code {
+    font-family: 'IBM Plex Mono', 'Cascadia Mono';
+}
+
+header, p, .action, .title, .description {
+    display: flex;
+}
+
+header, input, form, form > button{
+    font-size: 1.25rem;
+}
+
+table, .title {
+    line-height: 1.5rem;
+}
+
+header {
+    color: darkgray;
+    background-color: gray;
+    box-shadow: 0px 0px 5px gray;
+}
+
+strong {
+    font-weight: bold;
+}
+
+#descr {
+    font-size: 1rem;
+}
+
+
+/* Phase 3 */
+nav > strong {
+    line-height: 1.5rem;
+    color: black;
+    font-weight: bold;
+}
+
+.action {
+    flex-direction: column;
+    margin: 1rem 0rem 1rem 0rem;
+    border: 3px solid #204a87;
+    background-color: #b1c3de;
+}
+
+.action p {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 1rem 0px 1rem;
+}
+
+header {
+    margin-bottom: 3rem;
+}
+
+.description p {
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.title {
+    flex-direction: column;
+    margin: 1rem 0rem 1rem 0rem;
+}
+
+    .title strong {
+        border-bottom: 1px solid gray;
+        width: 100%;
+        font-size: 1.25rem;
+    }
+
+    .title p {
+        margin: 0px;
+    }

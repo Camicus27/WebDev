@@ -6,61 +6,49 @@
 
 <!-- Header at the top of the page -->
 <header>
-    <h1>
-        <strong>CS3550</strong>
-    </h1>
     <nav>
+        <strong>CS3550</strong>
         <a href="assignments.html">Assignments</a>
         <a href="profile.html">Profile</a>
     </nav>
 </header>
-<hr><br>
 
 <main>
-    <!-- Page sub-heading -->
-    <div class="sub-heading">
-        <h1>Homework 1 (HTML)</h1>
-        <hr>
+    <!-- Page title -->
+    <div class="title">
+        <p>
+            <strong>Homework 1 (HTML)</strong>
+        </p>
         <p>
             Due September 08, total of 100 points
         </p>
     </div>
-    <br>
     <!-- Grading box with submission information -->
-    <div class="grading-info">
-        <table bgcolor="#888" border="1">
-            <tr>
-                <td>
-                    Currently 2/3 submissions
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    1 submission assigned to you
-                </td>
-                <td>
-                    <nav>
-                        <a href="submissions.html" title="Grading assignments page">Grade</a>
-                    </nav>
-                </td>
-            </tr>
-        </table>
+    <div class="action">
+        <p>
+            Currently 2/3 submissions
+        </p>
+        <p>
+            1 submission assigned to you
+            <a href="submissions.html" title="Grading assignments page">Grade</a>
+        </p>
     </div>
-    <br>
     <!-- Description of the assignment and instructions -->
-    <h2>Description</h2>
-    <p>
+    <div class="description">
+        <p>
+            Description
+        </p>
         In this assignment, you will setup a web server serving HTML web pages for the grading application:
-    </p>
-    <li>
-        Configure and start a <em>basic web server</em> using Django
-    </li>
-    <li>
-        Create <em>basic web pages</em> using HTML for data/content
-    </li>
-    <p>
+        <div>
+            <li>
+                Configure and start a <em>basic web server</em> using Django
+            </li>
+            <li>
+                Create <em>basic web pages</em> using HTML for data/content
+            </li>
+        </div>
         For example, here is a page <strong>you will make</strong>, in a file called <code>assignments.html</code>
-    </p>
-    <!-- Picture example of the assignment expectations -->
-    <img src="https://github.com/Utah-CS3550-Fall-2023/assignments/blob/main/screenshots/assignment.png?raw=true" alt="Example image of the webpage to create">
+        <!-- Picture example of the assignment expectations -->
+        <img src="/static/hw1_example.png" alt="Example image of the webpage to create">
+    </div>
 </main>

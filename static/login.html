@@ -6,10 +6,8 @@
 
 <!-- Header at the top of the page -->
 <header>
-    <h1>
-        <strong>CS3550</strong>
-    </h1>
     <nav>
+        <strong id="cs3550">CS3550</strong>
         <a href="assignments.html">Assignments</a>
         <a href="profile.html">Profile</a>
     </nav>
@@ -18,33 +16,24 @@
 <br>
 
 <main>
-    <!-- Page sub-heading -->
-    <div class="sub-heading">
-        <h1>Log in</h1>
+    <!-- Page title -->
+    <div class="title">
+        Log in
         <hr>
     </div>
     <br>
     <!-- Login username and password inputs -->
-    <table width="100%">
-        <tr>
-            <td>
-                <label for="username">Username:</label>
-            </td>
-            <td>
-                <input id="username" type="text" autofocus>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="password">Password:</label>
-            </td>
-            <td>
-                <input id="password" type="password">
-            </td>
-        </tr>
-    </table>
-    <!-- Login button -->
-    <button>
-        Log in
-    </button>
+    <form>
+        <div>
+            <label for="username">Username:</label>
+            <input id="username" type="text" autofocus>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input id="password" type="password">
+        </div>
+        <button>
+            Log in
+        </button>
+    </form>
 </main>
