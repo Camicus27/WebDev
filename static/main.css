@@ -18,7 +18,7 @@ code {
     font-family: 'IBM Plex Mono', 'Cascadia Mono';
 }
 
-header, p, .action, .title, .description {
+header, main, p, a, nav, div, form, button, .table-header, .action, .title, .description {
     display: flex;
 }
 
@@ -31,10 +31,26 @@ table, .title {
 }
 
 header {
-    color: darkgray;
-    background-color: gray;
+    flex-direction: row;
+    align-items: center;
+    color: black;
+    background-color: #ddd;
     box-shadow: 0px 0px 5px gray;
+    margin: 0px;
 }
+    header div {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-right: 1rem;
+    }
+    header nav {
+        justify-content: space-between;
+        width: 100%;
+    }
+        header nav > a {
+            color: #444;
+            padding-right: 1rem;
+        }
 
 strong {
     font-weight: bold;
@@ -44,47 +60,133 @@ strong {
     font-size: 1rem;
 }
 
+td strong {
+    font-size: 1.25rem;
+}
+
 
 /* Phase 3 */
-nav > strong {
+header strong {
     line-height: 1.5rem;
     color: black;
-    font-weight: bold;
 }
 
 .action {
     flex-direction: column;
-    margin: 1rem 0rem 1rem 0rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     border: 3px solid #204a87;
     background-color: #b1c3de;
 }
-
-.action p {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0px 1rem 0px 1rem;
-}
+    .action p {
+        flex-direction: row;
+        justify-content: space-between;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 
 header {
     margin-bottom: 3rem;
 }
 
-.description p {
-    flex-direction: column;
-    margin: 1rem;
+tr {
+    display: table-row;
 }
+
+.description {
+    flex-direction: column;
+    padding-bottom: 1rem;
+    margin: 0px;
+}
+    .bullet-list {
+        flex-direction: column;
+    }
+    .description li {
+        padding: 0px;
+    }
+    .description strong, .description em, .description code {
+        margin: 0px 0.2rem 0px 0.2rem;
+    }
 
 .title {
     flex-direction: column;
-    margin: 1rem 0rem 1rem 0rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
 }
 
     .title strong {
         border-bottom: 1px solid gray;
         width: 100%;
-        font-size: 1.25rem;
+        font-size: 1.5rem;
     }
 
     .title p {
         margin: 0px;
+        padding: 0px;
     }
+
+
+/* Phase 4 */
+a {
+    text-decoration: none;
+}
+    a:hover {
+        text-decoration: underline;
+    }
+    a:active {
+        color: black;
+    }
+
+table {
+    width: 100%;
+}
+
+.number-col {
+    text-align: right;
+}
+
+#login-form {
+    flex-direction: column;
+}
+    #login-form div {
+        width: 100%;
+        align-items: center;
+        flex-direction: row;
+        padding-bottom: 1rem;
+        justify-content: space-between;
+    }
+        #login-form .login {
+            justify-content: center;
+        }
+            #login-form .login button {
+                width: 50%;
+                justify-content: center;
+            }
+
+#username, #password {
+    width: 50%;
+}
+
+#submit-grades {
+    flex-direction: row;
+}
+    #submit-grades > button {
+        margin-right: 1rem;
+    }
+
+
+/* Phase 5 */
+main {
+    flex-direction: column;
+    padding-left: max(1rem, calc((100% - 50rem)/2));
+    padding-right: max(1rem, calc((100% - 50rem)/2));
+}
+
+header div {
+    padding-left: max(1rem, calc((100% - 50rem)/2));
+}
+
+header nav {
+    padding-right: max(1rem, calc((100% - 50rem)/2));
+}

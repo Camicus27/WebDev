@@ -6,24 +6,24 @@
 
 <!-- Header at the top of the page -->
 <header>
+    <div>
+        <strong>CS3550</strong>
+    </div>
     <nav>
-        <strong id="cs3550">CS3550</strong>
         <a href="assignments.html">Assignments</a>
         <a href="profile.html">Profile</a>
     </nav>
 </header>
-<hr>
-<br>
 
 <main>
     <!-- Page title -->
     <div class="title">
-        Log in
-        <hr>
+        <p>
+            <strong>Log in</strong>
+        </p>
     </div>
-    <br>
     <!-- Login username and password inputs -->
-    <form>
+    <form id="login-form">
         <div>
             <label for="username">Username:</label>
             <input id="username" type="text" autofocus>
@@ -32,8 +32,10 @@
             <label for="password">Password:</label>
             <input id="password" type="password">
         </div>
-        <button>
-            Log in
-        </button>
+        <div class="login">
+            <button>
+                Log in
+            </button>
+        </div>
     </form>
 </main>
