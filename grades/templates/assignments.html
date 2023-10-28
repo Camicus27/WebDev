@@ -1,19 +1,4 @@
-<!doctype html>
-<meta charset="utf-8">
-<title>Assignments - CS 3550</title>
-<link rel="icon" href="/static/favicon.ico">
-<link rel="stylesheet" href="/static/main.css">
-
-<!-- Header at the top of the page -->
-<header>
-    <div>
-        <strong>CS3550</strong>
-    </div>
-    <nav>
-        <a href="assignments.html">Assignments</a>
-        <a href="profile.html">Profile</a>
-    </nav>
-</header>
+{% include 'header.html' with title='Assignments' %}
 
 <main>
     <!-- Page title -->
@@ -40,97 +25,19 @@
         </thead>
         <!-- Rows of assignments (Assn, Due Date, Weight) -->
         <tbody>
-            <tr>
-                <td>
-                    <nav>
-                        <a href="index.html" title="View assignment page">Github username</a>
-                    </nav>
-                </td>
-                <td>
-                    Aug 01
-                </td>
-                <td class="number-col">
-                    1
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <nav>
-                        <a href="index.html" title="View assignment page">Homework 1 (HTML)</a>
-                    </nav>
-                </td>
-                <td>
-                    Sep 08
-                </td>
-                <td class="number-col">
-                    100
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <nav>
-                        <a href="index.html" title="View assignment page">Homework 2 (CSS)</a>
-                    </nav>
-                </td>
-                <td>
-                    Sep 22
-                </td>
-                <td class="number-col">
-                    100
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <nav>
-                        <a href="index.html" title="View assignment page">Homework 3 (Backend)</a>
-                    </nav>
-                </td>
-                <td>
-                    Oct 27
-                </td>
-                <td class="number-col">
-                    100
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <nav>
-                        <a href="index.html" title="View assignment page">Homework 4 (Deploy)</a>
-                    </nav>
-                </td>
-                <td>
-                    Nov 10
-                </td>
-                <td class="number-col">
-                    100
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <nav>
-                        <a href="index.html" title="View assignment page">Homework 5 (Permissions)</a>
-                    </nav>
-                </td>
-                <td>
-                    Nov 24
-                </td>
-                <td class="number-col">
-                    100
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <nav>
-                        <a href="index.html" title="View assignment page">Homework 6 (JS)</a>
-                    </nav>
-                </td>
-                <td>
-                    Dec 08
-                </td>
-                <td class="number-col">
-                    100
-                </td>
-            </tr>
+            {% for assignment in assignments %}
+                <tr>
+                    <td>
+                        <a href="/{{assignment.id}}" title="View assignment page">{{assignment.title}}</a>
+                    </td>
+                    <td>
+                        {{assignment.deadline|date:"M d"}}
+                    </td>
+                    <td class="number-col">
+                        {{assignment.weight}}
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 </main>

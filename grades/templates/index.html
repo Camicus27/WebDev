@@ -1,38 +1,25 @@
-<!doctype html>
-<meta charset="utf-8">
-<title>Assignment 1 (HTML) - CS 3550</title>
-<link rel="icon" href="/static/favicon.ico">
-<link rel="stylesheet" href="/static/main.css">
-
-<!-- Header at the top of the page -->
-<header>
-    <div>
-        <strong>CS3550</strong>
-    </div>
-    <nav>
-        <a href="assignments.html">Assignments</a>
-        <a href="profile.html">Profile</a>
-    </nav>
-</header>
+{% include 'header.html' with title=assignment.title %}
 
 <main>
     <!-- Page title -->
     <div class="title">
         <p>
-            <strong>Homework 1 (HTML)</strong>
+            <strong>{{assignment.title}}</strong>
         </p>
         <p>
-            Due September 08, total of 100 points
+            Due {{assignment.deadline|date:"F d"}}, total of {{assignment.points}} point{{assignment.points|pluralize}}
         </p>
     </div>
     <!-- Grading box with submission information -->
     <div class="action">
         <p>
-            Currently 2/3 submissions
+            {% with submissions=assignment.submission_set %}
+            Currently {{submissions|length}}/{{students}} submission{{submissions|length|pluralize}}
+            {% endwith %}
         </p>
         <p>
-            1 submission assigned to you
-            <a href="submissions.html" title="Grading assignments page">Grade</a>
+            {{submissions_assigned}} submission{{submissions_assigned|pluralize}} assigned to you
+            <a href="/{{assignment.id}}/submissions" title="Grading assignments page">Grade</a>
         </p>
     </div>
     <!-- Description of the assignment and instructions -->
@@ -40,21 +27,6 @@
         <p>
             <strong>Description</strong>
         </p>
-        <p>
-            In this assignment, you will setup a web server serving HTML web pages for the grading application:
-        </p>
-        <div class="bullet-list">
-            <li>
-                Configure and start a<em>basic web server</em>using Django
-            </li>
-            <li>
-                Create<em>basic web pages</em>using HTML for data/content
-            </li>
-        </div>
-        <p>
-            For example, here is a page <strong>you will make,</strong> in a file called <code>assignments.html</code>
-        </p>
-        <!-- Picture example of the assignment expectations -->
-        <img src="/static/hw1_example.png" alt="Example image of the webpage to create">
+        {{assignment.description|safe}}
     </div>
 </main>

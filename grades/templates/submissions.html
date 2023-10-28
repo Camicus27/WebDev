@@ -1,30 +1,16 @@
-<!doctype html>
-<meta charset="utf-8">
-<title>Submissions - CS 3550</title>
-<link rel="icon" href="/static/favicon.ico">
-<link rel="stylesheet" href="/static/main.css">
-
-<!-- Header at the top of the page -->
-<header>
-    <div>
-        <strong>CS3550</strong>
-    </div>
-    <nav>
-        <a href="assignments.html">Assignments</a>
-        <a href="profile.html">Profile</a>
-    </nav>
-</header>
+{% include 'header.html' with title='Submissions' %}
 
 <main>
     <!-- Page title -->
     <div class="title">
         <p>
-            <strong>Homework 1 (HTML)</strong>
+            <strong>{{assignment.title}}</strong>
         </p>
         <p>
-            All grades out of 100
+            All grades out of {{assignment.points}}
         </p>
     </div>
+    
     <!-- Submissions list -->
     <table>
         <!-- Column titles -->
@@ -43,52 +29,32 @@
         </thead>
         <!-- Rows of assignments (Student name, Submission, Grade) -->
         <tbody>
-            <tr>
-                <td>
-                    s1
-                </td>
-                <td>
-                    <nav>
-                        <a href="" title="View student's submission">Submission</a>
-                    </nav>
-                </td>
-                <td>
-                    <form>
-                        <input type="number" title="Student grade from 0-100">
-                    </form>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    s2
-                </td>
-                <td>
-                    <nav>
-                        <a href="" title="View student's submission">Submission</a>
-                    </nav>
-                </td>
-                <td>
-                    <form>
-                        <input type="number" title="Student grade from 0-100">
-                    </form>
-                </td>
-            </tr>
+            {% for submiss in submissions_assigned %}
+                <tr>
+                    <td>
+                        {{submiss.author}}
+                    </td>
+                    <td>
+                        <a href="{{submiss.file}}" title="View student's submission">Submission</a>
+                    </td>
+                    <td>
+                        <form action="/{{assignment.id}}/grade" method="POST">
+                            {% csrf_token %}
+                            <input type="number" title="Student grade from 0-100" name="grade-{{assignment.id}}">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
         <tfoot>
             <tr>
                 <td>
-                    <!--
-                    <button title="Submit the students grades">
-                        Submit
-                    </button>
-                    <a href="index.html" role="button" title="Cancel changes and go back to assignemnt page">Back to assignment</a>
-                    -->
-
-                    <form id="submit-grades">
+                    <form id="submit-grades" action="/{{assignment.id}}/grade" method="POST">
+                        {% csrf_token %}
                         <button title="Submit the students grades">
                             Submit
                         </button>
-                        <a href="index.html" role="button" title="Cancel changes and go back to assignemnt page">Back to assignment</a>
+                        <a href="/{{assignment.id}}" role="button" title="Cancel changes and go back to assignemnt page">Back to assignment</a>
                     </form>
                 </td>
             </tr>

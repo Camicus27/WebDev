@@ -1,19 +1,4 @@
-<!doctype html>
-<meta charset="utf-8">
-<title>Profile - CS 3550</title>
-<link rel="icon" href="/static/favicon.ico">
-<link rel="stylesheet" href="/static/main.css">
-
-<!-- Header at the top of the page -->
-<header>
-    <div>
-        <strong>CS3550</strong>
-    </div>
-    <nav>
-        <a href="assignments.html">Assignments</a>
-        <a href="profile.html">Profile</a>
-    </nav>
-</header>
+{% include 'header.html' with title='Profile' %}
 
 <main>
     <!-- Page title -->
@@ -26,7 +11,7 @@
     <div class="action">
         <p>
             Currently logged in as ta1.
-            <a href="login.html" role="button">Log out</a>
+            <a href="/profile/login" role="button">Log out</a>
         </p>
     </div>
     <!-- Assignments list -->
@@ -44,76 +29,16 @@
         </thead>
         <!-- Rows of assignments (Assn, Graded) -->
         <tbody>
-            <tr>
-                <td>
-                    <nav>
-                        <a href="index.html" title="View assignment page">Github username</a>
-                    </nav>
-                </td>
-                <td class="number-col">
-                    2/3
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <nav>
-                        <a href="index.html" title="View assignment page">Homework 1 (HTML)</a>
-                    </nav>
-                </td>
-                <td class="number-col">
-                    Not due
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <nav>
-                        <a href="index.html" title="View assignment page">Homework 2 (CSS)</a>
-                    </nav>
-                </td>
-                <td class="number-col">
-                    Not due
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <nav>
-                        <a href="index.html" title="View assignment page">Homework 3 (Backend)</a>
-                    </nav>
-                </td>
-                <td class="number-col">
-                    Not due
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <nav>
-                        <a href="index.html" title="View assignment page">Homework 4 (Deploy)</a>
-                    </nav>
-                </td>
-                <td class="number-col">
-                    Not due
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <nav>
-                        <a href="index.html" title="View assignment page">Homework 5 (Permissions)</a>
-                    </nav>
-                </td>
-                <td class="number-col">
-                    Not due
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <nav>
-                        <a href="index.html" title="View assignment page">Homework 6 (JS)</a>
-                    </nav>
-                </td>
-                <td class="number-col">
-                    Not due
-                </td>
-            </tr>
+            {% for assignment in assignments %}
+                <tr>
+                    <td>
+                        <a href="/{{assignment.id}}" title="View assignment page">{{assignment.title}}</a>
+                    </td>
+                    <td class="number-col">
+                        {{graded}}/{{submissions_assigned}}
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 </main>

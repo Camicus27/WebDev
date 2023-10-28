@@ -24,5 +24,6 @@ urlpatterns = [
     path("<int:assignment_id>/", views.index),
     path("<int:assignment_id>/submissions", views.submissions),
     path("profile/", views.profile),
-    path("profile/login", views.login_form),    
+    path("profile/login", views.login_form),
+    path("<int:assignment_id>/grade", views.grade)
 ]
