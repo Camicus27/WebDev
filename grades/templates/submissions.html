@@ -30,31 +30,29 @@
         <!-- Rows of assignments (Student name, Submission, Grade) -->
         <form id="submit-grades" action="/{{assignment.id}}/grade" method="POST">
             {% csrf_token %}
-            <tbody>
-                {% for submiss in submissions_assigned %}
-                    <tr>
-                        <td>
-                            {{submiss.author}}
-                        </td>
-                        <td>
-                            <a href="{{submiss.file}}" title="View student's submission">Submission</a>
-                        </td>
-                        <td>
-                            <input type="number" title="Student grade from 0-100" name="grade-{{submiss.id}}" value="{{submiss.score}}" min="0" max="100" step="1">
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td>
-                        <button title="Submit the students grades">
+            {% for submiss in submissions_assigned %}
+            <tr>
+                <td>
+                    {{submiss.author}}
+                </td>
+                <td>
+                    <a href="{{submiss.file}}" title="View student's submission">Submission</a>
+                </td>
+                <td>
+                    <input type="number" title="Student grade from 0-100" name="grade-{{submiss.id}}" value="{{submiss.score}}">
+                </td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td>
+                    <div>
+                        <button id="submit-button" title="Submit the students grades">
                             Submit
                         </button>
                         <a href="/{{assignment.id}}" role="button" title="Cancel changes and go back to assignemnt page">Back to assignment</a>
-                    </td>
-                </tr>
-            </tfoot>
+                    </div>
+                </td>
+            </tr>
         </form>
     </table>
 </main>

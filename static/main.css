@@ -22,7 +22,7 @@ header, main, p, a, nav, div, form, button, .table-header, .action, .title, .des
     display: flex;
 }
 
-header, input, form, form > button{
+header, input, form, form button{
     font-size: 1.25rem;
 }
 
@@ -116,6 +116,7 @@ tr {
 }
 
     .title strong {
+        padding-bottom: 5px;
         border-bottom: 1px solid gray;
         width: 100%;
         font-size: 1.5rem;
@@ -168,12 +169,13 @@ table {
     width: 50%;
 }
 
-#submit-grades {
-    flex-direction: row;
+#submit-button {
+    margin-right: 1rem;
 }
-    #submit-grades > button {
-        margin-right: 1rem;
-    }
+
+thead > tr > td {
+    border-bottom: 1px solid gray;
+}
 
 
 /* Phase 5 */
