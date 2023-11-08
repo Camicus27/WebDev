@@ -37,14 +37,13 @@ def login_form(request):
 
 def grade(request, assignment_id):
     for key in request.POST:
-            if key.startswith('grade-'):
-                try:
-                    submission_id = int(key.split('-')[1])
-                    submission = models.Submission.objects.get(pk=submission_id)
-                    submission.score = float(request.POST[key])
-                    submission.save()
-                except ValueError:
-                    submission.score = None
-                    submission.save()
+        if key.startswith('grade-'):
+            try:
+                submission_id = int(key.split('-')[1])
+                submission = models.Submission.objects.get(pk=submission_id)
+                submission.score = float(request.POST[key])
+                submission.save()
+            except ValueError:
+                continue
 
     return redirect(f'/{assignment_id}/submissions')

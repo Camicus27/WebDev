@@ -28,36 +28,33 @@
             </tr>
         </thead>
         <!-- Rows of assignments (Student name, Submission, Grade) -->
-        <tbody>
-            {% for submiss in submissions_assigned %}
+        <form id="submit-grades" action="/{{assignment.id}}/grade" method="POST">
+            {% csrf_token %}
+            <tbody>
+                {% for submiss in submissions_assigned %}
+                    <tr>
+                        <td>
+                            {{submiss.author}}
+                        </td>
+                        <td>
+                            <a href="{{submiss.file}}" title="View student's submission">Submission</a>
+                        </td>
+                        <td>
+                            <input type="number" title="Student grade from 0-100" name="grade-{{submiss.id}}" value="{{submiss.score}}" min="0" max="100" step="1">
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
                 <tr>
                     <td>
-                        {{submiss.author}}
-                    </td>
-                    <td>
-                        <a href="{{submiss.file}}" title="View student's submission">Submission</a>
-                    </td>
-                    <td>
-                        <form action="/{{assignment.id}}/grade" method="POST">
-                            {% csrf_token %}
-                            <input type="number" title="Student grade from 0-100" name="grade-{{assignment.id}}">
-                        </form>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-        <tfoot>
-            <tr>
-                <td>
-                    <form id="submit-grades" action="/{{assignment.id}}/grade" method="POST">
-                        {% csrf_token %}
                         <button title="Submit the students grades">
                             Submit
                         </button>
                         <a href="/{{assignment.id}}" role="button" title="Cancel changes and go back to assignemnt page">Back to assignment</a>
-                    </form>
-                </td>
-            </tr>
-        </tfoot>
+                    </td>
+                </tr>
+            </tfoot>
+        </form>
     </table>
 </main>
