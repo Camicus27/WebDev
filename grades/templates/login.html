@@ -8,14 +8,15 @@
         </p>
     </div>
     <!-- Login username and password inputs -->
-    <form id="login-form">
+    <form id="login-form" action="/profile/login" method="POST">
+        {% csrf_token %}
         <div>
             <label for="username">Username:</label>
-            <input id="username" type="text" autofocus>
+            <input id="username" name="UsernameField" type="text" autofocus>
         </div>
         <div>
             <label for="password">Password:</label>
-            <input id="password" type="password">
+            <input id="password" name="PasswordField" type="password">
         </div>
         <div class="login">
             <button>
