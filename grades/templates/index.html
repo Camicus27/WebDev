@@ -11,17 +11,30 @@
         </p>
     </div>
     <!-- Grading box with submission information -->
-    <div class="action">
-        <p>
-            {% with submissions=assignment.submission_set %}
-            Currently {{submissions|length}}/{{students}} submission{{submissions|length|pluralize}}
-            {% endwith %}
-        </p>
-        <p>
-            {{submissions_assigned}} submission{{submissions_assigned|pluralize}} assigned to you
-            <a href="/{{assignment.id}}/submissions" title="Grading assignments page">Grade</a>
-        </p>
-    </div>
+    {% if is_ta %}
+        <div class="action">
+            <p>
+                {% with submissions=assignment.submission_set %}
+                Currently {{submissions|length}}/{{students}} submission{{submissions|length|pluralize}}
+                {% endwith %}
+            </p>
+            <p>
+                {{submissions_assigned}} submission{{submissions_assigned|pluralize}} assigned to you
+                <a href="/{{assignment.id}}/submissions" title="Grading assignments page">Grade</a>
+            </p>
+        </div>
+    {% endif %}
+    {% if is_student %}
+        <div class="action">
+            <p>
+                _
+            </p>
+            <p>
+                _
+                <a href="" title="">_</a>
+            </p>
+        </div>
+    {% endif %}
     <!-- Description of the assignment and instructions -->
     <div class="description">
         <p>

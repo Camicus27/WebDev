@@ -20,4 +20,4 @@ class Submission(models.Model):
     score = models.FloatField(null=True)
 
     def __str__(self):
-        return f"Submission for {self.assignment.title} by {self.author.get_full_name()}"
+        return f"Submission for {self.assignment.title} by {self.author.username}"

@@ -35,10 +35,41 @@
                         <a href="/{{assignment.id}}" title="View assignment page">{{assignment.title}}</a>
                     </td>
                     <td class="number-col">
-                        {{graded}}/{{submissions_assigned}}
+                        {% if is_student %}
+                            {% for grade in graded %}
+                                {% if forloop.parentloop.counter0 == forloop.counter0 %}
+                                    {{ grade }}
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            {% for submiss in submissions_assigned %}
+                                {% if forloop.parentloop.counter0 == forloop.counter0 %}
+                                    {% if submiss != 0 %}
+                                        {% for grade in graded %}
+                                            {% if forloop.parentloop.counter0 == forloop.counter0 %}
+                                                {{ grade }}
+                                            {% endif %}
+                                        {% endfor %}
+                                        / {{ submiss }}
+                                    {% else %}
+                                        Not due
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
+        <tfoot>
+            <tr>
+                <td>
+                    <strong>Final grade</strong>
+                </td>
+                <td class="number-col">
+                    <strong>{% if is_student %}{{final_grade}}{% endif %}</strong>
+                </td>
+            </tr>
+        </tfoot>
     </table>
 </main>
