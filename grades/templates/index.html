@@ -26,12 +26,17 @@
     {% endif %}
     {% if is_student %}
         <div class="action">
-            <p>
-                _
+            <p id="submission-status">
+                {{submission_status|safe}}
             </p>
             <p>
-                _
-                <a href="" title="">_</a>
+                <form id="submit-assign" action="/{{assignment.id}}/submit" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input name="student_submission" type="file">
+                    <button id="submit-button" title="Submit your assignment file">
+                        Submit
+                    </button>
+                </form>
             </p>
         </div>
     {% endif %}

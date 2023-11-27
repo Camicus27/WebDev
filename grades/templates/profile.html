@@ -52,7 +52,11 @@
                                         {% endfor %}
                                         / {{ submiss }}
                                     {% else %}
-                                        Not due
+                                        {% for grade in graded %}
+                                            {% if forloop.parentloop.counter0 == forloop.counter0 %}
+                                                {{ grade }}
+                                            {% endif %}
+                                        {% endfor %}
                                     {% endif %}
                                 {% endif %}
                             {% endfor %}
@@ -61,15 +65,17 @@
                 </tr>
             {% endfor %}
         </tbody>
+        {% if is_student %}
         <tfoot>
             <tr>
                 <td>
                     <strong>Final grade</strong>
                 </td>
                 <td class="number-col">
-                    <strong>{% if is_student %}{{final_grade}}{% endif %}</strong>
+                    <strong>{{final_grade}}</strong>
                 </td>
             </tr>
         </tfoot>
+        {% endif %}
     </table>
 </main>

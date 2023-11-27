@@ -84,6 +84,9 @@ header strong {
         padding-left: 1rem;
         padding-right: 1rem;
     }
+    .action #submission-status {
+        justify-content: flex-start;
+    }
 
 header {
     margin-bottom: 3rem;
@@ -191,4 +194,13 @@ header div {
 
 header nav {
     padding-right: max(1rem, calc((100% - 50rem)/2));
+}
+
+
+/* More css */
+output {
+    color: red;
+    font-weight: bold;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
