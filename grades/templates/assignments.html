@@ -15,10 +15,10 @@
                 <td>
                     <strong>Assignment</strong>
                 </td>
-                <td>
+                <td class="due-date sortable">
                     <strong>Due date</strong>
                 </td>
-                <td class="number-col">
+                <td class="number-col sortable">
                     <strong>Weight</strong>
                 </td>
             </tr>
@@ -26,11 +26,11 @@
         <!-- Rows of assignments (Assn, Due Date, Weight) -->
         <tbody>
             {% for assignment in assignments %}
-                <tr>
+                <tr data-index="{{forloop.counter}}">
                     <td>
                         <a href="/{{assignment.id}}" title="View assignment page">{{assignment.title}}</a>
                     </td>
-                    <td>
+                    <td class="date-data" data-value="{{assignment.deadline|date:"U"}}">
                         {{assignment.deadline|date:"M d"}}
                     </td>
                     <td class="number-col">
@@ -41,3 +41,5 @@
         </tbody>
     </table>
 </main>
+
+<script type="module" src="/static/main.js"></script>

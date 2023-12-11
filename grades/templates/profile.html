@@ -22,7 +22,7 @@
                 <td>
                     <strong>Assignment</strong>
                 </td>
-                <td class="number-col">
+                <td class="number-col sortable">
                     <strong>Graded</strong>
                 </td>
             </tr>
@@ -30,11 +30,11 @@
         <!-- Rows of assignments (Assn, Graded) -->
         <tbody>
             {% for assignment in assignments %}
-                <tr>
+                <tr data-index="{{forloop.counter}}">
                     <td>
                         <a href="/{{assignment.id}}" title="View assignment page">{{assignment.title}}</a>
                     </td>
-                    <td class="number-col">
+                    <td class="number-col" data-weight="{{assignment.weight}}">
                         {% if is_student %}
                             {% for grade in graded %}
                                 {% if forloop.parentloop.counter0 == forloop.counter0 %}
@@ -72,10 +72,12 @@
                     <strong>Final grade</strong>
                 </td>
                 <td class="number-col">
-                    <strong>{{final_grade}}</strong>
+                    <strong id="final-grade">{{final_grade}}</strong>
                 </td>
             </tr>
         </tfoot>
         {% endif %}
     </table>
 </main>
+
+<script type="module" src="/static/main.js"></script>
